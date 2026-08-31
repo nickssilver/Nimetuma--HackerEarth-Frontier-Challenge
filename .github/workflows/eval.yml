@@ -1,0 +1,35 @@
+name: eval
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nimetuma
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -e ".[dev]"
+      - name: Tests
+        run: pytest -q
+      - name: Eval
+        run: python -m nimetuma eval
+      - name: Require a perfect final score
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("results/eval.json").read_text())
+          final = report["stages"]["final"]
+          assert final["correct"] == 10, final
+          assert final["false_paid"] == 0, final
+          print("final 10/10, false paid 0")
+          PY
