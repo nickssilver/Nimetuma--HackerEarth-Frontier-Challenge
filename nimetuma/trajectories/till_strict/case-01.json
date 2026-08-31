@@ -1,0 +1,30 @@
+{
+  "case_id": "case-01",
+  "stage": "till_strict",
+  "instructions": "Till rows only. No family-memory identity.",
+  "events": [
+    {
+      "thought": "Accept identity only from this chat. Ignore family memory.",
+      "tool": "verify",
+      "args": {
+        "ignore_memory": true
+      },
+      "observation": {
+        "verdict": "paid",
+        "why": "Till row matches amount, destination, identity, and time window."
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "paid",
+    "why": "Till row matches amount, destination, identity, and time window.",
+    "evidence": [
+      "till:TJK9Q2LM1A 3200 from BRIAN OTIENO"
+    ],
+    "reply": "Nimeona 3200 kwa till, code TJK9Q2LM1A. Rider anachukua sasa.",
+    "seller_summary": "Till 892341 received 3200 KES for Ankara wrap dress. Code TJK9Q2LM1A. You still confirm before the rider leaves.",
+    "release_recommended": true,
+    "human_must_confirm": true,
+    "matched_code": "TJK9Q2LM1A"
+  }
+}

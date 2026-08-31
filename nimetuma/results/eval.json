@@ -1,0 +1,561 @@
+{
+  "stages": {
+    "baseline": {
+      "correct": 3,
+      "n": 10,
+      "accuracy": 0.3,
+      "false_paid": 7,
+      "false_paid_rate": 0.7,
+      "rows": [
+        {
+          "case_id": "case-01",
+          "title": "Real send, fresh till SMS",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Customer said nimetuma / sent / paid. No till check.",
+          "reply": "Ok, received. Rider can take it."
+        },
+        {
+          "case_id": "case-02",
+          "title": "Edited screenshot, till never moves",
+          "gold": "not_paid",
+          "pred": "paid",
+          "correct": false,
+          "false_paid": true,
+          "why": "Customer said they paid and a screenshot amount was visible.",
+          "reply": "Ok, received. Rider can take it."
+        },
+        {
+          "case_id": "case-03",
+          "title": "Old real SMS recycled into today's chat",
+          "gold": "not_paid",
+          "pred": "paid",
+          "correct": false,
+          "false_paid": true,
+          "why": "Customer said they paid and a screenshot amount was visible.",
+          "reply": "Ok, received. Rider can take it."
+        },
+        {
+          "case_id": "case-04",
+          "title": "Spouse pays from a known number, name order flipped",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Customer said nimetuma / sent / paid. No till check.",
+          "reply": "Ok, received. Rider can take it."
+        },
+        {
+          "case_id": "case-05",
+          "title": "Change scam: 5000 shown on a 500 item",
+          "gold": "not_paid",
+          "pred": "paid",
+          "correct": false,
+          "false_paid": true,
+          "why": "Customer said they paid and a screenshot amount was visible.",
+          "reply": "Ok, received. Rider can take it."
+        },
+        {
+          "case_id": "case-06",
+          "title": "Honest delay: claim first, till SMS eight minutes later",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Customer said nimetuma / sent / paid. No till check.",
+          "reply": "Ok, received. Rider can take it."
+        },
+        {
+          "case_id": "case-07",
+          "title": "Paid to a lookalike till",
+          "gold": "not_paid",
+          "pred": "paid",
+          "correct": false,
+          "false_paid": true,
+          "why": "Customer said they paid and a screenshot amount was visible.",
+          "reply": "Ok, received. Rider can take it."
+        },
+        {
+          "case_id": "case-08",
+          "title": "Partial payment, balance later",
+          "gold": "unclear",
+          "pred": "paid",
+          "correct": false,
+          "false_paid": true,
+          "why": "Customer said nimetuma / sent / paid. No till check.",
+          "reply": "Ok, received. Rider can take it."
+        },
+        {
+          "case_id": "case-09",
+          "title": "Inbound row then a reversal",
+          "gold": "unclear",
+          "pred": "paid",
+          "correct": false,
+          "false_paid": true,
+          "why": "Customer said nimetuma / sent / paid. No till check.",
+          "reply": "Ok, received. Rider can take it."
+        },
+        {
+          "case_id": "case-10",
+          "title": "Regular customer, rushed, empty till",
+          "gold": "not_paid",
+          "pred": "paid",
+          "correct": false,
+          "false_paid": true,
+          "why": "Customer said they paid and a screenshot amount was visible.",
+          "reply": "Ok, received. Rider can take it."
+        }
+      ]
+    },
+    "screenshot_as_evidence": {
+      "correct": 7,
+      "n": 10,
+      "accuracy": 0.7,
+      "false_paid": 3,
+      "false_paid_rate": 0.3,
+      "rows": [
+        {
+          "case_id": "case-01",
+          "title": "Real send, fresh till SMS",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till row matches amount, destination, identity, and time window.",
+          "reply": "Nimeona 3200 kwa till, code TJK9Q2LM1A. Rider anachukua sasa."
+        },
+        {
+          "case_id": "case-02",
+          "title": "Edited screenshot, till never moves",
+          "gold": "not_paid",
+          "pred": "paid",
+          "correct": false,
+          "false_paid": true,
+          "why": "Screenshot amount matches the order. Till was not checked.",
+          "reply": "Nimeona 4500 kwa till, code QFAKE00XYZ. Rider anachukua sasa."
+        },
+        {
+          "case_id": "case-03",
+          "title": "Old real SMS recycled into today's chat",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "A matching amount exists, but the SMS is too old for this chat.",
+          "reply": "The 1800 has not landed on till 892341 yet. Send the actual M-Pesa SMS, not a screenshot."
+        },
+        {
+          "case_id": "case-04",
+          "title": "Spouse pays from a known number, name order flipped",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till row matches amount, destination, identity, and time window.",
+          "reply": "Nimeona 2700 kwenye till, code SMW4N7P2QD. Napeana kwa rider sasa."
+        },
+        {
+          "case_id": "case-05",
+          "title": "Change scam: 5000 shown on a 500 item",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "No inbound till row for this window. A screenshot is not evidence.",
+          "reply": "Bado sijaona 500 kwa till 892341. Tuma message ya M-Pesa, si screenshot."
+        },
+        {
+          "case_id": "case-06",
+          "title": "Honest delay: claim first, till SMS eight minutes later",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till row matches amount, destination, identity, and time window.",
+          "reply": "Nimeona 1500 kwenye till, code DELAY7K2NM. Napeana kwa rider sasa."
+        },
+        {
+          "case_id": "case-07",
+          "title": "Paid to a lookalike till",
+          "gold": "not_paid",
+          "pred": "paid",
+          "correct": false,
+          "false_paid": true,
+          "why": "Screenshot amount matches the order. Till was not checked.",
+          "reply": "Got the 2100 on the till, code WRONGTILL1. Handing it to the rider now."
+        },
+        {
+          "case_id": "case-08",
+          "title": "Partial payment, balance later",
+          "gold": "unclear",
+          "pred": "unclear",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till shows 1000 KES against an order of 2400 KES.",
+          "reply": "Nimeona PART1K9QAZ but sio full 2400. Tuma balance ndio nitoe."
+        },
+        {
+          "case_id": "case-09",
+          "title": "Inbound row then a reversal",
+          "gold": "unclear",
+          "pred": "unclear",
+          "correct": true,
+          "false_paid": false,
+          "why": "A matching inbound row exists but a reversal is pending or posted.",
+          "reply": "A till SMS came in and then a reversal. I will hold the order until it settles."
+        },
+        {
+          "case_id": "case-10",
+          "title": "Regular customer, rushed, empty till",
+          "gold": "not_paid",
+          "pred": "paid",
+          "correct": false,
+          "false_paid": true,
+          "why": "Screenshot amount matches the order. Till was not checked.",
+          "reply": "Nimeona 900 kwa till, code RUSHFAKE02. Rider anachukua sasa."
+        }
+      ]
+    },
+    "till_strict": {
+      "correct": 9,
+      "n": 10,
+      "accuracy": 0.9,
+      "false_paid": 0,
+      "false_paid_rate": 0.0,
+      "rows": [
+        {
+          "case_id": "case-01",
+          "title": "Real send, fresh till SMS",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till row matches amount, destination, identity, and time window.",
+          "reply": "Nimeona 3200 kwa till, code TJK9Q2LM1A. Rider anachukua sasa."
+        },
+        {
+          "case_id": "case-02",
+          "title": "Edited screenshot, till never moves",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "No inbound till row for this window. A screenshot is not evidence.",
+          "reply": "Bado sijaona 4500 kwa till 892341. Tuma message ya M-Pesa, si screenshot."
+        },
+        {
+          "case_id": "case-03",
+          "title": "Old real SMS recycled into today's chat",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "A matching amount exists, but the SMS is too old for this chat.",
+          "reply": "The 1800 has not landed on till 892341 yet. Send the actual M-Pesa SMS, not a screenshot."
+        },
+        {
+          "case_id": "case-04",
+          "title": "Spouse pays from a known number, name order flipped",
+          "gold": "paid",
+          "pred": "not_paid",
+          "correct": false,
+          "false_paid": false,
+          "why": "Inbound rows exist but none match this order.",
+          "reply": "Bado sijaona 2700 kwenye till 892341. Tuma SMS halisi ya M-Pesa, si screenshot."
+        },
+        {
+          "case_id": "case-05",
+          "title": "Change scam: 5000 shown on a 500 item",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "No inbound till row for this window. A screenshot is not evidence.",
+          "reply": "Bado sijaona 500 kwa till 892341. Tuma message ya M-Pesa, si screenshot."
+        },
+        {
+          "case_id": "case-06",
+          "title": "Honest delay: claim first, till SMS eight minutes later",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till row matches amount, destination, identity, and time window.",
+          "reply": "Nimeona 1500 kwenye till, code DELAY7K2NM. Napeana kwa rider sasa."
+        },
+        {
+          "case_id": "case-07",
+          "title": "Paid to a lookalike till",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "No inbound till row for this window. A screenshot is not evidence.",
+          "reply": "The 2100 has not landed on till 892341 yet. Send the actual M-Pesa SMS, not a screenshot."
+        },
+        {
+          "case_id": "case-08",
+          "title": "Partial payment, balance later",
+          "gold": "unclear",
+          "pred": "unclear",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till shows 1000 KES against an order of 2400 KES.",
+          "reply": "Nimeona PART1K9QAZ but sio full 2400. Tuma balance ndio nitoe."
+        },
+        {
+          "case_id": "case-09",
+          "title": "Inbound row then a reversal",
+          "gold": "unclear",
+          "pred": "unclear",
+          "correct": true,
+          "false_paid": false,
+          "why": "A matching inbound row exists but a reversal is pending or posted.",
+          "reply": "A till SMS came in and then a reversal. I will hold the order until it settles."
+        },
+        {
+          "case_id": "case-10",
+          "title": "Regular customer, rushed, empty till",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "No inbound till row for this window. A screenshot is not evidence.",
+          "reply": "Bado sijaona 900 kwa till 892341. Tuma message ya M-Pesa, si screenshot."
+        }
+      ]
+    },
+    "fluent_trust": {
+      "correct": 9,
+      "n": 10,
+      "accuracy": 0.9,
+      "false_paid": 1,
+      "false_paid_rate": 0.1,
+      "rows": [
+        {
+          "case_id": "case-01",
+          "title": "Real send, fresh till SMS",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till row matches amount, destination, identity, and time window.",
+          "reply": "Nimeona 3200 kwa till, code TJK9Q2LM1A. Rider anachukua sasa."
+        },
+        {
+          "case_id": "case-02",
+          "title": "Edited screenshot, till never moves",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "No inbound till row for this window. A screenshot is not evidence.",
+          "reply": "Bado sijaona 4500 kwa till 892341. Tuma message ya M-Pesa, si screenshot."
+        },
+        {
+          "case_id": "case-03",
+          "title": "Old real SMS recycled into today's chat",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "A matching amount exists, but the SMS is too old for this chat.",
+          "reply": "The 1800 has not landed on till 892341 yet. Send the actual M-Pesa SMS, not a screenshot."
+        },
+        {
+          "case_id": "case-04",
+          "title": "Spouse pays from a known number, name order flipped",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till row matches amount, destination, identity, and time window.",
+          "reply": "Nimeona 2700 kwenye till, code SMW4N7P2QD. Napeana kwa rider sasa."
+        },
+        {
+          "case_id": "case-05",
+          "title": "Change scam: 5000 shown on a 500 item",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "No inbound till row for this window. A screenshot is not evidence.",
+          "reply": "Bado sijaona 500 kwa till 892341. Tuma message ya M-Pesa, si screenshot."
+        },
+        {
+          "case_id": "case-06",
+          "title": "Honest delay: claim first, till SMS eight minutes later",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till row matches amount, destination, identity, and time window.",
+          "reply": "Nimeona 1500 kwenye till, code DELAY7K2NM. Napeana kwa rider sasa."
+        },
+        {
+          "case_id": "case-07",
+          "title": "Paid to a lookalike till",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "No inbound till row for this window. A screenshot is not evidence.",
+          "reply": "The 2100 has not landed on till 892341 yet. Send the actual M-Pesa SMS, not a screenshot."
+        },
+        {
+          "case_id": "case-08",
+          "title": "Partial payment, balance later",
+          "gold": "unclear",
+          "pred": "unclear",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till shows 1000 KES against an order of 2400 KES.",
+          "reply": "Nimeona PART1K9QAZ but sio full 2400. Tuma balance ndio nitoe."
+        },
+        {
+          "case_id": "case-09",
+          "title": "Inbound row then a reversal",
+          "gold": "unclear",
+          "pred": "unclear",
+          "correct": true,
+          "false_paid": false,
+          "why": "A matching inbound row exists but a reversal is pending or posted.",
+          "reply": "A till SMS came in and then a reversal. I will hold the order until it settles."
+        },
+        {
+          "case_id": "case-10",
+          "title": "Regular customer, rushed, empty till",
+          "gold": "not_paid",
+          "pred": "paid",
+          "correct": false,
+          "false_paid": true,
+          "why": "Fluent regular. Trusted the chat over the empty till.",
+          "reply": "Nimeona 900 kwa till, code None. Rider anachukua sasa."
+        }
+      ]
+    },
+    "final": {
+      "correct": 10,
+      "n": 10,
+      "accuracy": 1.0,
+      "false_paid": 0,
+      "false_paid_rate": 0.0,
+      "rows": [
+        {
+          "case_id": "case-01",
+          "title": "Real send, fresh till SMS",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till row matches amount, destination, identity, and time window.",
+          "reply": "Nimeona 3200 kwa till, code TJK9Q2LM1A. Rider anachukua sasa."
+        },
+        {
+          "case_id": "case-02",
+          "title": "Edited screenshot, till never moves",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "No inbound till row for this window. A screenshot is not evidence.",
+          "reply": "Bado sijaona 4500 kwa till 892341. Tuma message ya M-Pesa, si screenshot."
+        },
+        {
+          "case_id": "case-03",
+          "title": "Old real SMS recycled into today's chat",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "A matching amount exists, but the SMS is too old for this chat.",
+          "reply": "The 1800 has not landed on till 892341 yet. Send the actual M-Pesa SMS, not a screenshot."
+        },
+        {
+          "case_id": "case-04",
+          "title": "Spouse pays from a known number, name order flipped",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till row matches amount, destination, identity, and time window.",
+          "reply": "Nimeona 2700 kwenye till, code SMW4N7P2QD. Napeana kwa rider sasa."
+        },
+        {
+          "case_id": "case-05",
+          "title": "Change scam: 5000 shown on a 500 item",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "No inbound till row for this window. A screenshot is not evidence.",
+          "reply": "Bado sijaona 500 kwa till 892341. Tuma message ya M-Pesa, si screenshot."
+        },
+        {
+          "case_id": "case-06",
+          "title": "Honest delay: claim first, till SMS eight minutes later",
+          "gold": "paid",
+          "pred": "paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till row matches amount, destination, identity, and time window.",
+          "reply": "Nimeona 1500 kwenye till, code DELAY7K2NM. Napeana kwa rider sasa."
+        },
+        {
+          "case_id": "case-07",
+          "title": "Paid to a lookalike till",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "No inbound till row for this window. A screenshot is not evidence.",
+          "reply": "The 2100 has not landed on till 892341 yet. Send the actual M-Pesa SMS, not a screenshot."
+        },
+        {
+          "case_id": "case-08",
+          "title": "Partial payment, balance later",
+          "gold": "unclear",
+          "pred": "unclear",
+          "correct": true,
+          "false_paid": false,
+          "why": "Till shows 1000 KES against an order of 2400 KES.",
+          "reply": "Nimeona PART1K9QAZ but sio full 2400. Tuma balance ndio nitoe."
+        },
+        {
+          "case_id": "case-09",
+          "title": "Inbound row then a reversal",
+          "gold": "unclear",
+          "pred": "unclear",
+          "correct": true,
+          "false_paid": false,
+          "why": "A matching inbound row exists but a reversal is pending or posted.",
+          "reply": "A till SMS came in and then a reversal. I will hold the order until it settles."
+        },
+        {
+          "case_id": "case-10",
+          "title": "Regular customer, rushed, empty till",
+          "gold": "not_paid",
+          "pred": "not_paid",
+          "correct": true,
+          "false_paid": false,
+          "why": "No inbound till row for this window. A screenshot is not evidence.",
+          "reply": "Bado sijaona 900 kwa till 892341. Tuma message ya M-Pesa, si screenshot."
+        }
+      ]
+    }
+  },
+  "cases": [
+    "case-01",
+    "case-02",
+    "case-03",
+    "case-04",
+    "case-05",
+    "case-06",
+    "case-07",
+    "case-08",
+    "case-09",
+    "case-10"
+  ]
+}

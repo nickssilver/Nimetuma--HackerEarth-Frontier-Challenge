@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.DS_Store
+submission/*.zip
+submission/Nimetuma-micro1-Frontier-Engineering-2026/

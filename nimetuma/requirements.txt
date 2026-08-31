@@ -1,0 +1,3 @@
+# Runtime: stdlib only. Install the package itself:
+#   pip install -e .
+pytest>=8.0

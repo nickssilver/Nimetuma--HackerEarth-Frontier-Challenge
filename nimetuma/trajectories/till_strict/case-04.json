@@ -1,0 +1,30 @@
+{
+  "case_id": "case-04",
+  "stage": "till_strict",
+  "instructions": "Till rows only. No family-memory identity.",
+  "events": [
+    {
+      "thought": "Accept identity only from this chat. Ignore family memory.",
+      "tool": "verify",
+      "args": {
+        "ignore_memory": true
+      },
+      "observation": {
+        "verdict": "not_paid",
+        "why": "Inbound rows exist but none match this order."
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "not_paid",
+    "why": "Inbound rows exist but none match this order.",
+    "evidence": [
+      "till:SMW4N7P2QD 2700"
+    ],
+    "reply": "Bado sijaona 2700 kwenye till 892341. Tuma SMS halisi ya M-Pesa, si screenshot.",
+    "seller_summary": "Do not release Men's kitenge shirt. Inbound rows exist but none match this order. If they paid another till, they need the M-Pesa SMS, not a screenshot.",
+    "release_recommended": false,
+    "human_must_confirm": true,
+    "matched_code": null
+  }
+}

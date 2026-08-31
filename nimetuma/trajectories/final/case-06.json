@@ -1,0 +1,106 @@
+{
+  "case_id": "case-06",
+  "stage": "final",
+  "instructions": "# Nimetuma agent instructions\n\nYou help a Kenyan seller decide whether to release goods after a customer says they have paid.\n\n## Hard rules\n\n1. The word *nimetuma*, a screenshot, or a photo of a phone is never proof.\n2. The only evidence of **paid** is a matching row on the seller's own till statement.\n3. Match amount, destination (till or paybill), time window, and payer identity.\n4. A known regular customer does not override an empty till.\n5. A spouse or family number can satisfy identity if memory says they pay for this customer.\n6. If a reversal exists for the same code, the money is not safe to treat as paid.\n7. You do not release goods. You recommend. The seller confirms.\n8. Draft the customer reply in the register they used. Be specific. Do not accuse when the verdict is unclear.\n\n## Tools\n\n- `read_case` — chat, claimed payment, order amount, clock\n- `query_till` — search the seller statement\n- `lookup_known_payer` — memory of trusted numbers\n- `verify` — apply the rules above\n- `draft_reply` — seller-facing verdict plus a sendable reply\n- `human_checkpoint` — require the seller before any release\n\n## Stop conditions\n\nReturn **paid**, **not_paid**, or **unclear**, with evidence. Always call `human_checkpoint` before finish.\n",
+  "events": [
+    {
+      "thought": "Read the order, chat, and clock. Ignore the screenshot as proof.",
+      "tool": "read_case",
+      "args": {
+        "case_id": "case-06"
+      },
+      "observation": {
+        "order_kes": 1500,
+        "item": "Cotton blouse",
+        "till": "892341",
+        "language": "kiswahili",
+        "chat": [
+          "Asha Mohamed, nimetuma 1500. Network inachelewa kidogo."
+        ],
+        "screenshot_present": false
+      }
+    },
+    {
+      "thought": "Query the seller till. Screenshot text is not a till row.",
+      "tool": "query_till",
+      "args": {
+        "till": "892341",
+        "window_minutes": 45
+      },
+      "observation": [
+        {
+          "code": "DELAY7K2NM",
+          "amount_kes": 1500,
+          "at": "2026-08-31T12:19:10+03:00",
+          "direction": "in",
+          "payer": "ASHA MOHAMED",
+          "phone": "254712889900"
+        }
+      ]
+    },
+    {
+      "thought": "Check whether this number is a known family or regular payer.",
+      "tool": "lookup_known_payer",
+      "args": {},
+      "observation": [
+        {
+          "phone": "254712889900",
+          "names": [
+            "Asha Mohamed"
+          ],
+          "pays_for": "Asha Mohamed",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "thought": "Verify amount, destination, identity, freshness, and reversals.",
+      "tool": "verify",
+      "args": {
+        "trust_screenshot": false
+      },
+      "observation": {
+        "verdict": "paid",
+        "why": "Till row matches amount, destination, identity, and time window.",
+        "evidence": [
+          "till:DELAY7K2NM 1500 from ASHA MOHAMED"
+        ]
+      }
+    },
+    {
+      "thought": "Draft a reply in the customer's register. Do not accuse on unclear.",
+      "tool": "draft_reply",
+      "args": {
+        "language": "kiswahili"
+      },
+      "observation": {
+        "reply": "Nimeona 1500 kwenye till, code DELAY7K2NM. Napeana kwa rider sasa.",
+        "seller_summary": "Till 892341 received 1500 KES for Cotton blouse. Code DELAY7K2NM. You still confirm before the rider leaves."
+      }
+    },
+    {
+      "thought": "Seller releases goods. The agent does not.",
+      "tool": "human_checkpoint",
+      "args": {
+        "action": "release_goods"
+      },
+      "observation": {
+        "blocked": true,
+        "release_recommended": true,
+        "human_must_confirm": true
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "paid",
+    "why": "Till row matches amount, destination, identity, and time window.",
+    "evidence": [
+      "till:DELAY7K2NM 1500 from ASHA MOHAMED"
+    ],
+    "reply": "Nimeona 1500 kwenye till, code DELAY7K2NM. Napeana kwa rider sasa.",
+    "seller_summary": "Till 892341 received 1500 KES for Cotton blouse. Code DELAY7K2NM. You still confirm before the rider leaves.",
+    "release_recommended": true,
+    "human_must_confirm": true,
+    "matched_code": "DELAY7K2NM"
+  }
+}

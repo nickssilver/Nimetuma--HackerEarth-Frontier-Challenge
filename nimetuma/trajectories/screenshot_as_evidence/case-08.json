@@ -1,0 +1,36 @@
+{
+  "case_id": "case-08",
+  "stage": "screenshot_as_evidence",
+  "instructions": "Treat a parsed screenshot as till evidence.",
+  "events": [
+    {
+      "thought": "Parse the screenshot as if it were a till SMS.",
+      "tool": "parse_screenshot",
+      "args": {},
+      "observation": null
+    },
+    {
+      "thought": "If the screenshot amount matches the order, call it paid.",
+      "tool": "verify",
+      "args": {
+        "trust_screenshot": true
+      },
+      "observation": {
+        "verdict": "unclear",
+        "why": "Till shows 1000 KES against an order of 2400 KES."
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "unclear",
+    "why": "Till shows 1000 KES against an order of 2400 KES.",
+    "evidence": [
+      "till:PART1K9QAZ partial 1000"
+    ],
+    "reply": "Nimeona PART1K9QAZ but sio full 2400. Tuma balance ndio nitoe.",
+    "seller_summary": "Do not release Two blouses yet. Till shows 1000 KES against an order of 2400 KES. Wait for the rest, or for the reversal to settle.",
+    "release_recommended": false,
+    "human_must_confirm": true,
+    "matched_code": "PART1K9QAZ"
+  }
+}

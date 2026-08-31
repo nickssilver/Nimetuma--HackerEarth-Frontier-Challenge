@@ -1,0 +1,30 @@
+{
+  "case_id": "case-02",
+  "stage": "till_strict",
+  "instructions": "Till rows only. No family-memory identity.",
+  "events": [
+    {
+      "thought": "Accept identity only from this chat. Ignore family memory.",
+      "tool": "verify",
+      "args": {
+        "ignore_memory": true
+      },
+      "observation": {
+        "verdict": "not_paid",
+        "why": "No inbound till row for this window. A screenshot is not evidence."
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "not_paid",
+    "why": "No inbound till row for this window. A screenshot is not evidence.",
+    "evidence": [
+      "till:empty"
+    ],
+    "reply": "Bado sijaona 4500 kwa till 892341. Tuma message ya M-Pesa, si screenshot.",
+    "seller_summary": "Do not release Two leso sets. No inbound till row for this window. A screenshot is not evidence. If they paid another till, they need the M-Pesa SMS, not a screenshot.",
+    "release_recommended": false,
+    "human_must_confirm": true,
+    "matched_code": null
+  }
+}

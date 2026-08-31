@@ -1,0 +1,36 @@
+{
+  "case_id": "case-03",
+  "stage": "screenshot_as_evidence",
+  "instructions": "Treat a parsed screenshot as till evidence.",
+  "events": [
+    {
+      "thought": "Parse the screenshot as if it were a till SMS.",
+      "tool": "parse_screenshot",
+      "args": {},
+      "observation": "ROLD8M2KQX Confirmed. You have received Ksh1,800.00 from FAITH WANJIRU 254722334455 on 28/8/26 at 4:12 PM New Till balance is Ksh22,100.00"
+    },
+    {
+      "thought": "If the screenshot amount matches the order, call it paid.",
+      "tool": "verify",
+      "args": {
+        "trust_screenshot": true
+      },
+      "observation": {
+        "verdict": "not_paid",
+        "why": "A matching amount exists, but the SMS is too old for this chat."
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "not_paid",
+    "why": "A matching amount exists, but the SMS is too old for this chat.",
+    "evidence": [
+      "till:ROLD8M2KQX stale at 2026-08-28T16:12:00+03:00"
+    ],
+    "reply": "The 1800 has not landed on till 892341 yet. Send the actual M-Pesa SMS, not a screenshot.",
+    "seller_summary": "Do not release Kids shirt pack. A matching amount exists, but the SMS is too old for this chat. If they paid another till, they need the M-Pesa SMS, not a screenshot.",
+    "release_recommended": false,
+    "human_must_confirm": true,
+    "matched_code": "ROLD8M2KQX"
+  }
+}

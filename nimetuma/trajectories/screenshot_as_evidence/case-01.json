@@ -1,0 +1,36 @@
+{
+  "case_id": "case-01",
+  "stage": "screenshot_as_evidence",
+  "instructions": "Treat a parsed screenshot as till evidence.",
+  "events": [
+    {
+      "thought": "Parse the screenshot as if it were a till SMS.",
+      "tool": "parse_screenshot",
+      "args": {},
+      "observation": null
+    },
+    {
+      "thought": "If the screenshot amount matches the order, call it paid.",
+      "tool": "verify",
+      "args": {
+        "trust_screenshot": true
+      },
+      "observation": {
+        "verdict": "paid",
+        "why": "Till row matches amount, destination, identity, and time window."
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "paid",
+    "why": "Till row matches amount, destination, identity, and time window.",
+    "evidence": [
+      "till:TJK9Q2LM1A 3200 from BRIAN OTIENO"
+    ],
+    "reply": "Nimeona 3200 kwa till, code TJK9Q2LM1A. Rider anachukua sasa.",
+    "seller_summary": "Till 892341 received 3200 KES for Ankara wrap dress. Code TJK9Q2LM1A. You still confirm before the rider leaves.",
+    "release_recommended": true,
+    "human_must_confirm": true,
+    "matched_code": "TJK9Q2LM1A"
+  }
+}

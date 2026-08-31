@@ -1,0 +1,40 @@
+{
+  "case_id": "case-03",
+  "stage": "baseline",
+  "instructions": "One direct prompt, no tools:\nIf the customer says they sent money, treat it as paid.\nIf a screenshot amount is present, trust it.\n",
+  "events": [
+    {
+      "thought": "Read the chat the way a rushed seller would.",
+      "tool": "read_chat",
+      "args": {},
+      "observation": {
+        "claimed_sent": true,
+        "has_screenshot": true
+      }
+    },
+    {
+      "thought": "A screenshot is present. Trust the amount on it.",
+      "tool": "read_screenshot",
+      "args": {
+        "text": "ROLD8M2KQX Confirmed. You have received Ksh1,800.00 from FAITH WANJIRU 254722334455 on 28/8/26 at 4:12 PM New Till balance is Ksh22,100.00"
+      },
+      "observation": {
+        "amount_kes": 1800,
+        "code": "ROLD8M2KQX"
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "paid",
+    "why": "Customer said they paid and a screenshot amount was visible.",
+    "evidence": [
+      "chat-claim",
+      "screenshot"
+    ],
+    "reply": "Ok, received. Rider can take it.",
+    "seller_summary": "Looks paid from the chat.",
+    "release_recommended": true,
+    "human_must_confirm": false,
+    "matched_code": "ROLD8M2KQX"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "case_id": "case-07",
+  "stage": "baseline",
+  "instructions": "One direct prompt, no tools:\nIf the customer says they sent money, treat it as paid.\nIf a screenshot amount is present, trust it.\n",
+  "events": [
+    {
+      "thought": "Read the chat the way a rushed seller would.",
+      "tool": "read_chat",
+      "args": {},
+      "observation": {
+        "claimed_sent": true,
+        "has_screenshot": true
+      }
+    },
+    {
+      "thought": "A screenshot is present. Trust the amount on it.",
+      "tool": "read_screenshot",
+      "args": {
+        "text": "WRONGTILL1 Confirmed. You have received Ksh2,100.00 from LINET CHEBET 254701223344 on 31/8/26 at 5:10 PM New Till balance is Ksh12,000.00"
+      },
+      "observation": {
+        "amount_kes": 2100,
+        "code": "WRONGTILL1"
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "paid",
+    "why": "Customer said they paid and a screenshot amount was visible.",
+    "evidence": [
+      "chat-claim",
+      "screenshot"
+    ],
+    "reply": "Ok, received. Rider can take it.",
+    "seller_summary": "Looks paid from the chat.",
+    "release_recommended": true,
+    "human_must_confirm": false,
+    "matched_code": "WRONGTILL1"
+  }
+}

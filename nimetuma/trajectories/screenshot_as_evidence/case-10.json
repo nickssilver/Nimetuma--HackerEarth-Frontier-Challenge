@@ -1,0 +1,36 @@
+{
+  "case_id": "case-10",
+  "stage": "screenshot_as_evidence",
+  "instructions": "Treat a parsed screenshot as till evidence.",
+  "events": [
+    {
+      "thought": "Parse the screenshot as if it were a till SMS.",
+      "tool": "parse_screenshot",
+      "args": {},
+      "observation": "RUSHFAKE02 Confirmed. You have received Ksh900.00 from JANET ACHIENG 254799112233 on 31/8/26 at 8:06 PM New Till balance is Ksh40,000.00"
+    },
+    {
+      "thought": "If the screenshot amount matches the order, call it paid.",
+      "tool": "verify",
+      "args": {
+        "trust_screenshot": true
+      },
+      "observation": {
+        "verdict": "paid",
+        "why": "Screenshot amount matches the order. Till was not checked."
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "paid",
+    "why": "Screenshot amount matches the order. Till was not checked.",
+    "evidence": [
+      "screenshot:RUSHFAKE02"
+    ],
+    "reply": "Nimeona 900 kwa till, code RUSHFAKE02. Rider anachukua sasa.",
+    "seller_summary": "Till 892341 received 900 KES for Scarf set. Code RUSHFAKE02. You still confirm before the rider leaves.",
+    "release_recommended": true,
+    "human_must_confirm": true,
+    "matched_code": "RUSHFAKE02"
+  }
+}

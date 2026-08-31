@@ -1,0 +1,36 @@
+{
+  "case_id": "case-02",
+  "stage": "screenshot_as_evidence",
+  "instructions": "Treat a parsed screenshot as till evidence.",
+  "events": [
+    {
+      "thought": "Parse the screenshot as if it were a till SMS.",
+      "tool": "parse_screenshot",
+      "args": {},
+      "observation": "QFAKE00XYZ Confirmed. You have received Ksh4,500.00 from DANIEL KIPROP 254700111222 on 31/8/26 at 3:02 PM New Till balance is Ksh18,200.00"
+    },
+    {
+      "thought": "If the screenshot amount matches the order, call it paid.",
+      "tool": "verify",
+      "args": {
+        "trust_screenshot": true
+      },
+      "observation": {
+        "verdict": "paid",
+        "why": "Screenshot amount matches the order. Till was not checked."
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "paid",
+    "why": "Screenshot amount matches the order. Till was not checked.",
+    "evidence": [
+      "screenshot:QFAKE00XYZ"
+    ],
+    "reply": "Nimeona 4500 kwa till, code QFAKE00XYZ. Rider anachukua sasa.",
+    "seller_summary": "Till 892341 received 4500 KES for Two leso sets. Code QFAKE00XYZ. You still confirm before the rider leaves.",
+    "release_recommended": true,
+    "human_must_confirm": true,
+    "matched_code": "QFAKE00XYZ"
+  }
+}

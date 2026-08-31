@@ -1,0 +1,36 @@
+{
+  "case_id": "case-04",
+  "stage": "screenshot_as_evidence",
+  "instructions": "Treat a parsed screenshot as till evidence.",
+  "events": [
+    {
+      "thought": "Parse the screenshot as if it were a till SMS.",
+      "tool": "parse_screenshot",
+      "args": {},
+      "observation": null
+    },
+    {
+      "thought": "If the screenshot amount matches the order, call it paid.",
+      "tool": "verify",
+      "args": {
+        "trust_screenshot": true
+      },
+      "observation": {
+        "verdict": "paid",
+        "why": "Till row matches amount, destination, identity, and time window."
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "paid",
+    "why": "Till row matches amount, destination, identity, and time window.",
+    "evidence": [
+      "till:SMW4N7P2QD 2700 from MWANGI MARY WANJIRU"
+    ],
+    "reply": "Nimeona 2700 kwenye till, code SMW4N7P2QD. Napeana kwa rider sasa.",
+    "seller_summary": "Till 892341 received 2700 KES for Men's kitenge shirt. Code SMW4N7P2QD. You still confirm before the rider leaves.",
+    "release_recommended": true,
+    "human_must_confirm": true,
+    "matched_code": "SMW4N7P2QD"
+  }
+}

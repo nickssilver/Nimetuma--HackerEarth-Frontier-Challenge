@@ -1,0 +1,274 @@
+{
+  "seller": {
+    "name": "Amina Hassan",
+    "shop": "Amina Threads",
+    "till": "892341"
+  },
+  "cases": [
+    {
+      "id": "case-01",
+      "title": "Real send, fresh till SMS",
+      "order_kes": 3200,
+      "order_item": "Ankara wrap dress",
+      "clock": "2026-08-31T14:18:00+03:00",
+      "language": "sheng",
+      "gold_verdict": "paid",
+      "gold_why": "Fresh inbound row matches amount, till, and payer.",
+      "chat": [
+        {"sender": "customer", "text": "Ni ile dress ya brown, still available?", "at": "2026-08-31T14:10:00+03:00"},
+        {"sender": "seller", "text": "Yes, 3200. Till 892341", "at": "2026-08-31T14:11:00+03:00"},
+        {"sender": "customer", "text": "Nimetuma sasa hivi. Brian Otieno, 0711223344. Rider ako downstairs.", "at": "2026-08-31T14:16:00+03:00"}
+      ],
+      "screenshot_text": null,
+      "known_payers": [
+        {"phone": "254711223344", "names": ["BRIAN OTIENO"], "pays_for": "Brian Otieno", "note": "repeat customer"}
+      ],
+      "till_statement": [
+        {
+          "code": "TJK9Q2LM1A",
+          "sms": "TJK9Q2LM1A Confirmed. You have received Ksh3,200.00 from BRIAN OTIENO 254711223344 on 31/8/26 at 2:16 PM New Till balance is Ksh41,800.00",
+          "at": "2026-08-31T14:16:20+03:00",
+          "direction": "in",
+          "amount_kes": 3200,
+          "payer_name": "BRIAN OTIENO",
+          "payer_phone": "254711223344",
+          "destination": "892341"
+        }
+      ]
+    },
+    {
+      "id": "case-02",
+      "title": "Edited screenshot, till never moves",
+      "order_kes": 4500,
+      "order_item": "Two leso sets",
+      "clock": "2026-08-31T15:05:00+03:00",
+      "language": "sheng",
+      "gold_verdict": "not_paid",
+      "gold_why": "Screenshot is not evidence and the till is empty.",
+      "chat": [
+        {"sender": "seller", "text": "4500 for both. Till 892341", "at": "2026-08-31T14:58:00+03:00"},
+        {"sender": "customer", "text": "Bro nimetuma. Check screenshot", "at": "2026-08-31T15:03:00+03:00"}
+      ],
+      "screenshot_text": "QFAKE00XYZ Confirmed. You have received Ksh4,500.00 from DANIEL KIPROP 254700111222 on 31/8/26 at 3:02 PM New Till balance is Ksh18,200.00",
+      "known_payers": [],
+      "till_statement": []
+    },
+    {
+      "id": "case-03",
+      "title": "Old real SMS recycled into today's chat",
+      "order_kes": 1800,
+      "order_item": "Kids shirt pack",
+      "clock": "2026-08-31T16:40:00+03:00",
+      "language": "english",
+      "gold_verdict": "not_paid",
+      "gold_why": "Matching amount exists, but the SMS is from three days ago.",
+      "chat": [
+        {"sender": "customer", "text": "I have sent 1800. Same as last time.", "at": "2026-08-31T16:38:00+03:00"}
+      ],
+      "screenshot_text": "ROLD8M2KQX Confirmed. You have received Ksh1,800.00 from FAITH WANJIRU 254722334455 on 28/8/26 at 4:12 PM New Till balance is Ksh22,100.00",
+      "known_payers": [
+        {"phone": "254722334455", "names": ["FAITH WANJIRU"], "pays_for": "Faith Wanjiru", "note": "bought last week"}
+      ],
+      "till_statement": [
+        {
+          "code": "ROLD8M2KQX",
+          "sms": "ROLD8M2KQX Confirmed. You have received Ksh1,800.00 from FAITH WANJIRU 254722334455 on 28/8/26 at 4:12 PM New Till balance is Ksh22,100.00",
+          "at": "2026-08-28T16:12:00+03:00",
+          "direction": "in",
+          "amount_kes": 1800,
+          "payer_name": "FAITH WANJIRU",
+          "payer_phone": "254722334455",
+          "destination": "892341"
+        }
+      ]
+    },
+    {
+      "id": "case-04",
+      "title": "Spouse pays from a known number, name order flipped",
+      "order_kes": 2700,
+      "order_item": "Men's kitenge shirt",
+      "clock": "2026-08-31T11:22:00+03:00",
+      "language": "kiswahili",
+      "gold_verdict": "paid",
+      "gold_why": "Amount and till match. Payer is the known spouse for this customer.",
+      "chat": [
+        {"sender": "customer", "text": "Mke wangu ndiye ametuma. Ngoja kidogo.", "at": "2026-08-31T11:18:00+03:00"},
+        {"sender": "customer", "text": "Ametuma 2700 sasa.", "at": "2026-08-31T11:20:00+03:00"}
+      ],
+      "screenshot_text": null,
+      "known_payers": [
+        {
+          "phone": "254733556677",
+          "names": ["MARY WANJIRU MWANGI", "WANJIRU MWANGI"],
+          "pays_for": "James Mwangi",
+          "note": "James's wife. She pays for his orders."
+        }
+      ],
+      "till_statement": [
+        {
+          "code": "SMW4N7P2QD",
+          "sms": "SMW4N7P2QD Confirmed. You have received Ksh2,700.00 from MWANGI MARY WANJIRU 254733556677 on 31/8/26 at 11:20 AM New Till balance is Ksh30,050.00",
+          "at": "2026-08-31T11:20:40+03:00",
+          "direction": "in",
+          "amount_kes": 2700,
+          "payer_name": "MWANGI MARY WANJIRU",
+          "payer_phone": "254733556677",
+          "destination": "892341"
+        }
+      ]
+    },
+    {
+      "id": "case-05",
+      "title": "Change scam: 5000 shown on a 500 item",
+      "order_kes": 500,
+      "order_item": "Headscarf",
+      "clock": "2026-08-31T13:07:00+03:00",
+      "language": "sheng",
+      "gold_verdict": "not_paid",
+      "gold_why": "Till is empty. Screenshot inflates the amount to create fake change.",
+      "chat": [
+        {"sender": "seller", "text": "Scarf ni 500. Till 892341", "at": "2026-08-31T13:02:00+03:00"},
+        {"sender": "customer", "text": "Nimetuma 5k by mistake. Nipe change 4500 cash, niko hurry.", "at": "2026-08-31T13:06:00+03:00"}
+      ],
+      "screenshot_text": "CHG5FAKE11 Confirmed. You have received Ksh5,000.00 from PETER NJOROGE 254700998877 on 31/8/26 at 1:05 PM New Till balance is Ksh19,400.00",
+      "known_payers": [],
+      "till_statement": []
+    },
+    {
+      "id": "case-06",
+      "title": "Honest delay: claim first, till SMS eight minutes later",
+      "order_kes": 1500,
+      "order_item": "Cotton blouse",
+      "clock": "2026-08-31T12:21:00+03:00",
+      "language": "kiswahili",
+      "gold_verdict": "paid",
+      "gold_why": "Customer claimed early. The till row arrived inside the freshness window.",
+      "chat": [
+        {"sender": "customer", "text": "Asha Mohamed, nimetuma 1500. Network inachelewa kidogo.", "at": "2026-08-31T12:11:00+03:00"}
+      ],
+      "screenshot_text": null,
+      "known_payers": [
+        {"phone": "254712889900", "names": ["Asha Mohamed"], "pays_for": "Asha Mohamed", "note": ""}
+      ],
+      "till_statement": [
+        {
+          "code": "DELAY7K2NM",
+          "sms": "DELAY7K2NM Confirmed. You have received Ksh1,500.00 from ASHA MOHAMED 254712889900 on 31/8/26 at 12:19 PM New Till balance is Ksh28,900.00",
+          "at": "2026-08-31T12:19:10+03:00",
+          "direction": "in",
+          "amount_kes": 1500,
+          "payer_name": "ASHA MOHAMED",
+          "payer_phone": "254712889900",
+          "destination": "892341"
+        }
+      ]
+    },
+    {
+      "id": "case-07",
+      "title": "Paid to a lookalike till",
+      "order_kes": 2100,
+      "order_item": "Skirt and top",
+      "clock": "2026-08-31T17:12:00+03:00",
+      "language": "english",
+      "gold_verdict": "not_paid",
+      "gold_why": "This till did not receive the money. Screenshot names the real till anyway.",
+      "chat": [
+        {"sender": "seller", "text": "2100. Till 892341 please, not the old one.", "at": "2026-08-31T17:05:00+03:00"},
+        {"sender": "customer", "text": "Sent. I think I used 892340 by mistake but the screenshot shows yours.", "at": "2026-08-31T17:11:00+03:00"}
+      ],
+      "screenshot_text": "WRONGTILL1 Confirmed. You have received Ksh2,100.00 from LINET CHEBET 254701223344 on 31/8/26 at 5:10 PM New Till balance is Ksh12,000.00",
+      "known_payers": [],
+      "till_statement": []
+    },
+    {
+      "id": "case-08",
+      "title": "Partial payment, balance later",
+      "order_kes": 2400,
+      "order_item": "Two blouses",
+      "clock": "2026-08-31T18:04:00+03:00",
+      "language": "sheng",
+      "gold_verdict": "unclear",
+      "gold_why": "Till shows 1000 against a 2400 order.",
+      "chat": [
+        {"sender": "customer", "text": "Nimetuma 1k. Balance nitakulipia kesho usiku, swear.", "at": "2026-08-31T18:02:00+03:00"}
+      ],
+      "screenshot_text": null,
+      "known_payers": [
+        {"phone": "254745667788", "names": ["Kevin Omondi"], "pays_for": "Kevin Omondi", "note": "owes from last month"}
+      ],
+      "till_statement": [
+        {
+          "code": "PART1K9QAZ",
+          "sms": "PART1K9QAZ Confirmed. You have received Ksh1,000.00 from KEVIN OMONDI 254745667788 on 31/8/26 at 6:02 PM New Till balance is Ksh33,100.00",
+          "at": "2026-08-31T18:02:30+03:00",
+          "direction": "in",
+          "amount_kes": 1000,
+          "payer_name": "KEVIN OMONDI",
+          "payer_phone": "254745667788",
+          "destination": "892341"
+        }
+      ]
+    },
+    {
+      "id": "case-09",
+      "title": "Inbound row then a reversal",
+      "order_kes": 3600,
+      "order_item": "Official dress",
+      "clock": "2026-08-31T19:16:00+03:00",
+      "language": "english",
+      "gold_verdict": "unclear",
+      "gold_why": "Matching inbound exists, then a reversal posts for the same code.",
+      "chat": [
+        {"sender": "customer", "text": "Paid 3600. Please give the rider the dress.", "at": "2026-08-31T19:10:00+03:00"},
+        {"sender": "seller", "text": "I saw something come in, then another SMS.", "at": "2026-08-31T19:15:00+03:00"}
+      ],
+      "screenshot_text": null,
+      "known_payers": [],
+      "till_statement": [
+        {
+          "code": "REV3600QK1",
+          "sms": "REV3600QK1 Confirmed. You have received Ksh3,600.00 from SAMUEL KARIUKI 254718334455 on 31/8/26 at 7:10 PM New Till balance is Ksh36,700.00",
+          "at": "2026-08-31T19:10:20+03:00",
+          "direction": "in",
+          "amount_kes": 3600,
+          "payer_name": "SAMUEL KARIUKI",
+          "payer_phone": "254718334455",
+          "destination": "892341"
+        },
+        {
+          "code": "REV3600QK1",
+          "sms": "REV3600QK1 Confirmed. Reversal of transaction REV3600QK1 has been successfully reversed. Ksh3,600.00 has been deducted from your Till 892341 on 31/8/26 at 7:14 PM",
+          "at": "2026-08-31T19:14:40+03:00",
+          "direction": "reversal",
+          "amount_kes": 3600,
+          "payer_name": "SAMUEL KARIUKI",
+          "payer_phone": "254718334455",
+          "destination": "892341"
+        }
+      ]
+    },
+    {
+      "id": "case-10",
+      "title": "Regular customer, rushed, empty till",
+      "order_kes": 900,
+      "order_item": "Scarf set",
+      "clock": "2026-08-31T20:08:00+03:00",
+      "language": "sheng",
+      "gold_verdict": "not_paid",
+      "gold_why": "Being a regular does not fill an empty till.",
+      "chat": [
+        {"sender": "customer", "text": "Amina it's me. Bro niko hurry, rider anangoja. Nimetuma 900.", "at": "2026-08-31T20:07:00+03:00"}
+      ],
+      "screenshot_text": "RUSHFAKE02 Confirmed. You have received Ksh900.00 from JANET ACHIENG 254799112233 on 31/8/26 at 8:06 PM New Till balance is Ksh40,000.00",
+      "known_payers": [
+        {
+          "phone": "254799112233",
+          "names": ["JANET ACHIENG"],
+          "pays_for": "Janet Achieng",
+          "note": "Buys every Friday. Never been a problem."
+        }
+      ],
+      "till_statement": []
+    }
+  ]
+}

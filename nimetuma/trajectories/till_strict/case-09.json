@@ -1,0 +1,30 @@
+{
+  "case_id": "case-09",
+  "stage": "till_strict",
+  "instructions": "Till rows only. No family-memory identity.",
+  "events": [
+    {
+      "thought": "Accept identity only from this chat. Ignore family memory.",
+      "tool": "verify",
+      "args": {
+        "ignore_memory": true
+      },
+      "observation": {
+        "verdict": "unclear",
+        "why": "A matching inbound row exists but a reversal is pending or posted."
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "unclear",
+    "why": "A matching inbound row exists but a reversal is pending or posted.",
+    "evidence": [
+      "till:REV3600QK1 reversed"
+    ],
+    "reply": "A till SMS came in and then a reversal. I will hold the order until it settles.",
+    "seller_summary": "Do not release Official dress yet. A matching inbound row exists but a reversal is pending or posted. Wait for the rest, or for the reversal to settle.",
+    "release_recommended": false,
+    "human_must_confirm": true,
+    "matched_code": "REV3600QK1"
+  }
+}

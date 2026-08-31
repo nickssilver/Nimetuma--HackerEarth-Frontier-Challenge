@@ -1,0 +1,23 @@
+[project]
+name = "nimetuma"
+version = "0.1.0"
+description = "Did the money actually land? Till-truth agent for Kenyan sellers."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+nimetuma = "nimetuma.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["nimetuma*"]
+
+[tool.setuptools.package-data]
+nimetuma = ["instructions.md"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
